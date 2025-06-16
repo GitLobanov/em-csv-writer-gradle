@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group = 'by.lobanov'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+ext {
+    lombokVersion = '1.18.38'
+    csvVersion = '1.0-SNAPSHOT'
+}
+
+dependencies {
+    implementation ("by.lobanov:csv:$csvVersion")
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
+    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+test {
+    useJUnitPlatform()
+}
